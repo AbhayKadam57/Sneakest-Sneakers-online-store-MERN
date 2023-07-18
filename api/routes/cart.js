@@ -1,5 +1,5 @@
 const Router = require("express").Router();
-const Cart = require("../models/cart");
+const Cart = require("../models/cart.js");
 
 Router.post("/", async (req, res) => {
   const oldCart = await Cart.findOne({ username: req.body.username });

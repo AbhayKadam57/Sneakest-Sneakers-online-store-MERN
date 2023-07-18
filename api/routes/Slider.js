@@ -1,47 +1,26 @@
-const Router = require('express').Router()
-const Slider = require("../models/Slider")
+const Router = require("express").Router();
+const Slider = require("../models/Slider.js");
 
+Router.post("/", async (req, res) => {
+  const Images = new Slider(req.body);
 
-Router.post("/",async(req,res)=>{
+  try {
+    const saveImages = await Images.save();
 
-    const Images = new Slider(req.body)
+    res.status(200).json(saveImages);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
-    try{
+Router.get("/", async (req, res) => {
+  try {
+    const Image = await Slider.find();
 
-        const saveImages = await Images.save()
+    res.status(200).json(Image);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
-        res.status(200).json(saveImages)
-
-    }catch(error){
-
-
-        res.status(500).json(error)
-    }
-
-})
-
-
-Router.get("/",async(req,res)=>{
-
-    try{
-
-        const Image = await Slider.find()
-
-        res.status(200).json(Image)
-
-
-    }catch(error){
-
-        res.status(500).json(error)
-
-    }
-
-
-
-
-
-})
-
-
-
-module.exports=Router
+module.exports = Router;
