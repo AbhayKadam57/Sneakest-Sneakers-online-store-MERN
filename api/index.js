@@ -9,7 +9,7 @@ const productRoutes = require("../api/routes/product.js");
 const orderRoutes = require("../api/routes/orders.js");
 const sliderRoutes = require("../api/routes/Slider.js");
 const cartRoutes = require("../api/routes/cart.js");
-const paymentRoutes = require("../api/routes/payment.js");
+const paymentRoutes = require("../api/routes/Payment.js");
 
 dotenv.config();
 
